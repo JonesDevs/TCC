@@ -11,28 +11,29 @@
   <header>
     <h1>Cod&Go</h1>
   </header>
-
-  <div class="login-container">
-    <h2>Crie sua conta</h2>
-    <form action="../php/cadastro.php" method="post">
+  <main>
+    <div class="login-container">
+      <h2>Crie sua conta</h2>
+      <form action="../php/cadastro.php" method="post">
+        
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" name="usuario" required>
       
-      <label for="usuario">Usuário:</label>
-      <input type="text" id="usuario" name="usuario" required>
-    
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-    
-      <label for="senha">Senha:</label>
-      <input type="password" id="senha" name="senha" required>
-    
-      <button type="submit" class="btn-primary">Cadastrar</button>
-    </form>
-    
-    <div class="register-link">
-      Já tem uma conta? <a href="login.html">Fazer login</a>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+      
+        <button type="submit" class="btn-primary">Cadastrar</button>
+      </form>
+      
+      <div class="register-link">
+        Já tem uma conta? <a href="login.html">Fazer login</a>
+      </div>
     </div>
-  </div>
-
+  </main>
+  
   <footer>
     <p>Desenvolvido por [Nomes dos Integrantes]</p>
   </footer>
