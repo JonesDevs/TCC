@@ -1,103 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: sans-serif;
-    background: #fff;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  header {
-    padding: 20px;
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    color: #8000ff;
-  }
-  main.container {
-    text-align: center;
-    padding: 40px;
-  }
-  
-  .mascot-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 40px;
-  }
-  
-  .mascot {
-    width: 100px;
-  }
-  
-  .speech-bubble {
-    background: #fff;
-    border: 1px solid #ccc;
-    padding: 10px 15px;
-    border-radius: 20px;
-    position: relative;
-  }
-  
-  .speech-bubble::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: -10px;
-    border: 10px solid transparent;
-    border-right-color: #ccc;
-    transform: translateY(-50%);
-  }
-  
-  .options-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 250px);
-    gap: 15px;
-    justify-content: center;
-  }
-  
-  .option {
-    display: flex;
-    align-items: center;
-    border: 2px solid #9CB0CB;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    gap: 10px;
-    background: #fff;
-    transition: background 0.2s;
-  }
-  
-  .option:hover {
-    background: #f0f4ff;
-  }
-  
-  .option img {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .continue-btn {
-    margin-top: 40px;
-    background: #89CFF0;
-    border: none;
-    color: white;
-    font-weight: bold;
-    padding: 10px 30px;
-    font-size: 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .continue-btn:hover {
-    background: #5ab0e6;
-  }
-  footer {
-    background-color: #8000ff;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2); /* Sombra superior */
-  }
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgba(0, 0, 0, 0.15);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+footer {
+  background-color: rgb(44, 62, 80);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form-section {
+  background-color: rgba(255, 255, 255, 0.74);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 10px 10px 30px 10px rgba(44, 62, 80, 0.3);
+  text-align: center;
+}
+
+.mascot {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.option {
+  position: relative;
+  background-color: #ecf0f1;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  font-weight: bold;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.option input[type="checkbox"] {
+  display: none;
+}
+
+.option:hover {
+  background-color: #d0e6f7;
+}
+
+.option.selected {
+  background-color: #d0e6f7;
+  transform: scale(0.98);
+  box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.option .language-img {
+  width: 40px; /* Ajustando a largura */
+  height: 40px; /* Ajustando a altura */
+  margin-bottom: 0.5rem;
+  object-fit: contain; /* Para garantir que a imagem não estique nem distorça */
+}
+
+.option .label-text {
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.submit-btn {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
+}
