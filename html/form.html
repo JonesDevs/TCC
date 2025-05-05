@@ -1,40 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Como você conheceu?</title>
-  <link rel="stylesheet" href="../css/form.css" />
+  <title>Quais linguagens quer aprender?</title>
+  <link rel="stylesheet" href="../css/formcss.css" />
 </head>
 <body>
 
-    <header>
-        <h1>Cod&Go</h1>
-      </header>
+  <header>
+    <h1>Cod&Go</h1>
+  </header>
 
-    <main class="container">
-        <div class="mascot-section">
-        <img src="mascot.png" alt="Mascote" class="mascot"/>
-        <div class="speech-bubble">How did you hear about Coddy?</div>
-        </div>
+  <main class="container">
+    <section class="form-section">
+      <img src="../img/Logo1Forms.png" alt="Mascote" class="mascot"/>
 
+      <h2>Quais linguagens quer aprender?</h2>
+
+      <form id="source-form">
         <div class="options-grid">
-        <div class="option"><img src="icons/home.svg"/> Friends/Family</div>
-        <div class="option"><img src="icons/tiktok.svg"/> TikTok</div>
-        <div class="option"><img src="icons/instagram.svg"/> Instagram</div>
-        <div class="option"><img src="icons/linkedin.svg"/> Linkedin</div>
-        <div class="option"><img src="icons/facebook.svg"/> Facebook</div>
-        <div class="option"><img src="icons/youtube.svg"/> Youtube</div>
-        <div class="option"><img src="icons/twitch.svg"/> Twitch</div>
-        <div class="option"><img src="icons/other.svg"/> Other</div>
+          <label class="option">
+            <input type="checkbox" name="languages" value="Python" />
+            <img src="../img/Phython.png" alt="Python" class="language-img" />
+            <span class="label-text">Python</span>
+          </label>
+
+          <label class="option">
+            <input type="checkbox" name="languages" value="JavaScript" />
+            <img src="../img/JavaScript.png" alt="JavaScript" class="language-img" />
+            <span class="label-text">JavaScript</span>
+          </label>
+
+          <label class="option">
+            <input type="checkbox" name="languages" value="Java" />
+            <img src="../img/Java.png" alt="Java" class="language-img" />
+            <span class="label-text">Java</span>
+          </label>
+
+          <label class="option">
+            <input type="checkbox" name="languages" value="C#" />
+            <img src="../img/C.png" alt="C#" class="language-img" />
+            <span class="label-text">C#</span>
+          </label>
+
+          <label class="option">
+            <input type="checkbox" name="languages" value="PHP" />
+            <img src="../img/PHP.png" alt="PHP" class="language-img" />
+            <span class="label-text">PHP</span>
+          </label>
+
+          <label class="option">
+            <input type="checkbox" name="languages" value="C++" />
+            <img src="../img/C++.png" alt="C++" class="language-img" />
+            <span class="label-text">C++</span>
+          </label>
+
+          <label class="option">
+            <input type="checkbox" name="languages" value="SQL" />
+            <img src="../img/SQL2.png" alt="SQL" class="language-img" />
+            <span class="label-text">SQL</span>
+          </label>
+
+          <label class="option">
+            <input type="checkbox" name="languages" value="Ruby" />
+            <img src="../img/Ruby.jpg" alt="Ruby" class="language-img" />
+            <span class="label-text">Ruby</span>
+          </label>
         </div>
 
-        <button class="continue-btn">CONTINUE</button>
-    </main>
+        <button type="submit" class="submit-btn">CONTINUAR</button>
+      </form>
+    </section>
+  </main>
 
-    <footer>
-        <p>Integrantes do TCC: João Pedro, Matheus Nogueira</p>
-    </footer>
-    
+  <footer>
+    <p>Integrantes do TCC: João Pedro, Matheus Nogueira e Matheus Nunes</p>
+  </footer>
+
+  <!-- Script para capturar as seleções -->
+  <script>
+    // Marcar visualmente os selecionados
+    const options = document.querySelectorAll('.option input[type="checkbox"]');
+
+    options.forEach((checkbox) => {
+      checkbox.addEventListener('change', () => {
+        const label = checkbox.parentElement;
+        if (checkbox.checked) {
+          label.classList.add('selected');
+        } else {
+          label.classList.remove('selected');
+        }
+      });
+    });
+
+    // Script de submit
+    document.getElementById("source-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const selectedOptions = document.querySelectorAll('input[name="languages"]:checked');
+
+      if (selectedOptions.length > 0) {
+        const selectedLanguages = Array.from(selectedOptions).map(opt => 
+          opt.parentElement.querySelector('.label-text').textContent.trim()
+        );
+
+        alert("Você escolheu: " + selectedLanguages.join(", "));
+      } else {
+        alert("Por favor, selecione pelo menos uma linguagem.");
+      }
+    });
+  </script>
+
 </body>
 </html>
