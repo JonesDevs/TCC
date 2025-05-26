@@ -22,54 +22,55 @@
     let peixe = {
       x: 0,
       yBase: 150,
-      largura: 40,
-      altura: 20,
-      velocidade: 1.5,
-      amplitude: 30,
+      largura: 80,
+      altura: 80,
+      velocidade: 2,
+      amplitude: 25,
       frequencia: 0.02
     };
 
     let tempo = 0;
+
+    // Carrega a imagem do peixe
+    const imgPeixe = new Image();
+    imgPeixe.src = "Logo1.png";
+
+    imgPeixe.onload = function () {
+      atualizar();
+    };
 
     function desenharLago() {
       ctx.fillStyle = "#1E90FF";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
-    function desenharPeixe(x, y) {
-      ctx.fillStyle = "orange";
-      ctx.beginPath();
-      ctx.ellipse(x, y, peixe.largura, peixe.altura, 0, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Nadadeira (triângulo)
-      ctx.beginPath();
-      ctx.moveTo(x - peixe.largura, y);
-      ctx.lineTo(x - peixe.largura - 10, y - 10);
-      ctx.lineTo(x - peixe.largura - 10, y + 10);
-      ctx.closePath();
-      ctx.fill();
+    function desenharPeixe(x, y, angulo) {
+      ctx.save(); // Salva o contexto atual
+      ctx.translate(x, y); // Move a origem para o centro do peixe
+      ctx.rotate(angulo); // Rotaciona o peixe levemente
+      ctx.drawImage(imgPeixe, -peixe.largura / 2, -peixe.altura / 2, peixe.largura, peixe.altura);
+      ctx.restore(); // Restaura o contexto original
     }
 
     function atualizar() {
       peixe.x += peixe.velocidade;
       tempo += peixe.frequencia;
 
-      // Faz o peixe subir e descer em onda
-      let yOndulado = peixe.yBase + Math.sin(tempo * 2 * Math.PI) * peixe.amplitude;
+      // Movimento ondulante mais natural
+      let y = peixe.yBase + Math.sin(tempo * 2 * Math.PI) * peixe.amplitude;
 
-      // Reseta posição horizontal ao sair da tela
+      // Calcula a inclinação com base na derivada da função seno
+      let inclinacao = Math.cos(tempo * 2 * Math.PI) * 0.3; // ajuste a intensidade da rotação
+
+      // Reinicia a posição do peixe ao sair da tela
       if (peixe.x > canvas.width + peixe.largura) {
         peixe.x = -peixe.largura;
       }
 
       desenharLago();
-      desenharPeixe(peixe.x, yOndulado);
+      desenharPeixe(peixe.x, y, inclinacao);
       requestAnimationFrame(atualizar);
     }
-
-    atualizar();
   </script>
 </body>
 </html>
-
