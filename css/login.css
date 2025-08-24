@@ -1,0 +1,165 @@
+/* ======== Layout base ======== */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* ======== Cabeçalho ======== */
+header {
+  text-align: center;
+  padding: 40px 0 20px;
+}
+
+header h1 {
+  font-size: 3em;
+  color: #8000ff;
+  margin: 0;
+}
+
+/* ======== Conteúdo principal ======== */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ======== Caixa de login ======== */
+.login-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(128, 0, 255, 0.4);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  color: #8000ff;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.login-container h2 {
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #8000ff;
+}
+
+/* ======== Labels ======== */
+.login-container label {
+  display: block;
+  text-align: left;
+  margin: 10px 0 5px;
+  font-weight: 500;
+  color: #8000ff;
+}
+
+/* ======== Inputs ======== */
+.login-container input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #c9a8ff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #4b0082;
+  outline-color: #8000ff;
+  background-color: white;
+  transition: border-color 0.2s ease;
+}
+
+.login-container input:focus {
+  border-color: #8000ff;
+  box-shadow: 0 0 6px rgba(128, 0, 255, 0.4);
+}
+
+/* ======== Botão login ======== */
+.btn-primary {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  padding: 12px;
+  margin: 10px auto;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #8000ff;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(128, 0, 255, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 14px rgba(128, 0, 255, 0.5);
+}
+
+/* ======== Link para cadastro ======== */
+.register-link {
+  margin-top: 20px;
+  color: #5e2d91;
+}
+
+.register-link a {
+  color: #8000ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-link a:hover {
+  color: #4b0082;
+}
+
+/* ======== Rodapé ======== */
+footer {
+  background-color: #8000ff;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+}
+
+/* ======== Animação ======== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center; /* centraliza verticalmente */
+}
+
+.password-wrapper input {
+  flex: 1;
+  padding-right: 2.5em; /* espaço para o botão */
+  height: 2.5em; /* altura consistente */
+  box-sizing: border-box;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 0.5em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* ocupar a altura do input */
+}
+
+.toggle-password img {
+  width: 1.5em;
+  height: 1.5em;
+  object-fit: contain; /* mantém proporção correta */
+}
