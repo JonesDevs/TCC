@@ -1,28 +1,45 @@
 <?php
-$servername = "localhost";
-$username = "root";
+session_start();
+
+// Dados do banco
+$host = "localhost";
+$user = "root";
 $password = "";
-$database = "CdoGo";
+$database = "codgotemp";
 
-$conn = new mysqli($servername, $username, $password, $database);
+// Conectar
+$conn = new mysqli($host, $user, $password, $database);
 
+// Erro de conexão
 if ($conn->connect_error) {
-  die("Erro na conexão: " . $conn->connect_error);
+    die("Erro na conexão: " . $conn->connect_error);
 }
 
-$usuario = $_POST['usuario'];
+// Pegar dados do formulário
+$nomeUsuario = $_POST['usuario'];
 $email = $_POST['email'];
-$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+$senha = $_POST['senha'];
 
-$sql = "INSERT INTO usuarios (usuario, email, senha) VALUES (?, ?, ?)";
+// Hash da senha
+$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+// Inserir no banco
+$sql = "INSERT INTO usuario (nomeUsuario, email, senha) VALUES (?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sss", $usuario, $email, $senha);
+$stmt->bind_param("sss", $nomeUsuario, $email, $senhaHash);
 
 if ($stmt->execute()) {
-  echo "Cadastro realizado com sucesso!";
+    // Guardar ID do usuário na sessão
+    $_SESSION['id'] = $stmt->insert_id;
+    $_SESSION['nomeUsuario'] = $nomeUsuario;
+
+    // Vai direto pro form escolher linguagens
+    header("Location: ../html/form.html");
+    exit();
 } else {
-  echo "Erro ao cadastrar: " . $stmt->error;
+    echo "Erro ao cadastrar: " . $conn->error;
 }
 
+$stmt->close();
 $conn->close();
 ?>
