@@ -14,58 +14,46 @@
 
   <main class="container">
     <section class="form-section">
-      <img src="../img/Logo1Forms.png" alt="Mascote" class="mascot"/>
+      <img src="../img/Logo1.png" alt="Mascote" class="mascot"/>
 
       <h2>Quais linguagens quer aprender?</h2>
 
-      <form id="source-form">
+      <form id="source-form" action="../php/processa_form.php" method="POST">
         <div class="options-grid">
           <label class="option">
-            <input type="checkbox" name="languages" value="Python" />
-            <img src="../img/Phython.png" alt="Python" class="language-img" />
-            <span class="label-text">Python</span>
+            <input type="checkbox" name="languages[]" value="HTML" />
+            <img src="../img/html.png" alt="HTML" class="language-img" />
+            <span class="label-text">HTML</span>
           </label>
 
           <label class="option">
-            <input type="checkbox" name="languages" value="JavaScript" />
-            <img src="../img/JavaScript.png" alt="JavaScript" class="language-img" />
+            <input type="checkbox" name="languages[]" value="CSS" />
+            <img src="../img/css.png" alt="CSS" class="language-img" />
+            <span class="label-text">CSS</span>
+          </label>
+
+          <label class="option">
+            <input type="checkbox" name="languages[]" value="JavaScript" />
+            <img src="../img/js.jpg" alt="JavaScript" class="language-img" />
             <span class="label-text">JavaScript</span>
           </label>
 
           <label class="option">
-            <input type="checkbox" name="languages" value="Java" />
-            <img src="../img/Java.png" alt="Java" class="language-img" />
-            <span class="label-text">Java</span>
-          </label>
-
-          <label class="option">
-            <input type="checkbox" name="languages" value="C#" />
-            <img src="../img/C.png" alt="C#" class="language-img" />
-            <span class="label-text">C#</span>
-          </label>
-
-          <label class="option">
-            <input type="checkbox" name="languages" value="PHP" />
-            <img src="../img/PHP.png" alt="PHP" class="language-img" />
+            <input type="checkbox" name="languages[]" value="PHP" />
+            <img src="../img/php.png" alt="PHP" class="language-img" />
             <span class="label-text">PHP</span>
           </label>
 
           <label class="option">
-            <input type="checkbox" name="languages" value="C++" />
+            <input type="checkbox" name="languages[]" value="C++" />
             <img src="../img/C++.png" alt="C++" class="language-img" />
             <span class="label-text">C++</span>
           </label>
 
           <label class="option">
-            <input type="checkbox" name="languages" value="SQL" />
-            <img src="../img/SQL2.png" alt="SQL" class="language-img" />
-            <span class="label-text">SQL</span>
-          </label>
-
-          <label class="option">
-            <input type="checkbox" name="languages" value="Ruby" />
-            <img src="../img/Ruby.jpg" alt="Ruby" class="language-img" />
-            <span class="label-text">Ruby</span>
+            <input type="checkbox" name="languages[]" value="Outros" />
+            <img src="../img/outros.webp" alt="Outros" class="language-img" />
+            <span class="label-text">Outros</span>
           </label>
         </div>
 
@@ -78,9 +66,8 @@
     <p>Integrantes do TCC: João Pedro, Matheus Nogueira e Matheus Nunes</p>
   </footer>
 
-  <!-- Script para capturar as seleções -->
+  <!-- Script para marcar visualmente os selecionados -->
   <script>
-    // Marcar visualmente os selecionados
     const options = document.querySelectorAll('.option input[type="checkbox"]');
 
     options.forEach((checkbox) => {
@@ -94,19 +81,12 @@
       });
     });
 
-    // Script de submit
+    // Validação antes de enviar o formulário
     document.getElementById("source-form").addEventListener("submit", function (e) {
-      e.preventDefault();
+      const selectedOptions = document.querySelectorAll('input[name="languages[]"]:checked');
 
-      const selectedOptions = document.querySelectorAll('input[name="languages"]:checked');
-
-      if (selectedOptions.length > 0) {
-        const selectedLanguages = Array.from(selectedOptions).map(opt => 
-          opt.parentElement.querySelector('.label-text').textContent.trim()
-        );
-
-        alert("Você escolheu: " + selectedLanguages.join(", "));
-      } else {
+      if (selectedOptions.length === 0) {
+        e.preventDefault(); // impede o envio se não escolher nada
         alert("Por favor, selecione pelo menos uma linguagem.");
       }
     });
