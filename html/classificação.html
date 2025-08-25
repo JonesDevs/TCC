@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Classificação - Cod&Go</title>
+  <link rel="stylesheet" href="../css/principal.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f6ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-principal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: #e0d4ff;
+    }
+
+    .avatar-header {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .usuario-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-titulo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4b0082;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto 100px;
+      padding: 0 20px;
+    }
+
+    h2 {
+      color: #4b0082;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background-color: #e0d4ff;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    thead {
+      background-color: #8000ff;
+      color: white;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #d9ccff;
+    }
+
+    tbody tr:hover {
+      background-color: #c1aaff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #e0d4ff;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+<?php
+  // Dados exemplo - geralmente vêm do banco de dados
+  $usuario = "Maria Silva";
+
+  // Exemplo array com usuários para classificação
+  $classificacao = [
+    ['nome' => 'João Pedro', 'pontos' => 250, 'modulos' => 10],
+    ['nome' => 'Matheus Nogueira', 'pontos' => 230, 'modulos' => 9],
+    ['nome' => 'Marcus Evaristo Rocha', 'pontos' => 210, 'modulos' => 8],
+    ['nome' => 'Matheus Nunes', 'pontos' => 190, 'modulos' => 7],
+    ['nome' => 'Maria Silva', 'pontos' => 180, 'modulos' => 6],
+  ];
+?>
+
+<header class="header-principal">
+  <h1 class="logo-titulo">Cod&Go</h1>
+  <div class="usuario-header">
+    <span class="nome-usuario">Olá, <?= htmlspecialchars($usuario) ?>!</span>
+    <img src="../img/avatar.png" alt="Avatar do usuário" class="avatar-header">
+  </div>
+</header>
+
+<main>
+  <h2>Classificação</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Pontos</th>
+        <th>Módulos Completos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($classificacao as $usuarioClass): ?>
+        <tr>
+          <td><?= htmlspecialchars($usuarioClass['nome']) ?></td>
+          <td><?= htmlspecialchars($usuarioClass['pon]()
