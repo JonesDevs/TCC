@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Desafios - Cod&Go</title>
+  <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f6ff;
+      margin: 0;
+      padding: 0;
+      color: #3b0a66;
+    }
+
+    header {
+      background: #d8c8ff;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 28px;
+      color: #4b0082;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+
+    .usuario-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .usuario-info span {
+      font-weight: 600;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid #8000ff;
+      object-fit: cover;
+      box-shadow: 0 0 8px #b199ff88;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 40px auto 120px;
+      padding: 0 20px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 25px;
+      color: #4b0082;
+      user-select: none;
+    }
+
+    .progresso {
+      background: #d9ccff;
+      padding: 15px 25px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      box-shadow: 0 3px 10px #b199ff55;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .progresso span {
+      background: #8000ff;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 30px;
+      box-shadow: 0 2px 6px #5c00b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 12px;
+    }
+
+    thead tr {
+      background-color: #8000ff;
+      color: #fff;
+      border-radius: 12px;
+      user-select: none;
+    }
+
+    thead th {
+      padding: 14px 12px;
+      font-weight: 700;
+      text-align: left;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    tbody tr {
+      background: #e0d4ff;
+      box-shadow: 0 2px 8px #b199ff66;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    tbody tr:hover {
+      background: #c9baff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px #8000ffaa;
+    }
+
+    tbody td {
+      padding: 18px 12px;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+
+    .status {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 14px;
+      width: fit-content;
+      user-select: none;
+    }
+
+    .status.pendente {
+      background-color: #ffb300;
+      color: #4a3c00;
+    }
+
+    .status.concluido {
+      background-color: #3fc970;
+      color: #05430f;
+    }
+
+    .status.emprogresso {
+      background-color: #7266ff;
+      color: white;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #d8c8ff;
+      padding: 14px 0;
+      text-align: center;
+      font-weight: 600;
+      color: #4b0082;
+      user-select: none;
+      box-shadow: 0 -3px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Botão para ganhar pontos extras */
+    .btn-ganhar {
+      background-color: #4b0082;
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px #8000ffaa;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .btn-ganhar:hover {
+      background-color: #3a006d;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Cod&Go</div>
+  <div class="usuario-info">
+    <span>Olá, Maria Silva!</span>
+    <img src="https://i.pravatar.cc/48?u=maria.silva" alt="Avatar" class="avatar" />
+  </div>
+</header>
+
+<main>
+  <h2>Seus Desafios</h2>
+
+  <div class="progresso">
+    <span>Pontos Totais: <strong id="total-pontos">380</strong></span>
+    <span>Módulos Completos: <strong id="modulos-completos">7</strong></span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Missão</th>
+        <th>Descrição</th>
+        <th>Pontos</th>
+        <th>Status</th>
+        <th>Ganhar pontos extras</th>
+      </tr>
+    </thead>
+    <tbody id="tabela-desafios">
+      <tr>
+        <td>Desafio 1</td>
+        <td>Complete o módulo básico de HTML.</td>
+        <td>50</td>
+        <td><span class="status concluido">Concluído</span></td>
+        <td><button class="btn-ganhar" disabled>Já ganhou</button></td>
+      </tr>
+      <tr>
+        <td>Desafio 2</td>
+        <td>Faça 5 exercícios de CSS avançado.</td>
+        <td>70</td>
+        <td><span class="status emprogresso">Em progresso</span></td>
+        <td><button class="btn-ganhar">Ganhar +20 pontos</button></td>
+      </tr>
+      <tr>
+        <td>Desafio 3</td>
+        <td>Resolva 3 desafios de JavaScript.</td>
+        <td>80</td>
+        <td><span class="status pendente">Pendente</span></td>
+        <td><button class="btn-ganhar">Ganhar +20 pontos</button></td>
+      </tr>
+      <tr>
+        <td>Desafio 4</td>
+        <td>Participe do fórum e ajude colegas.</td>
+        <td>40</td>
+        <td><span class="status pendente">Pendente</span></td>
+        <td><button class="btn-ganhar">Ganhar +20 pontos</button></td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+
+<footer>
+  &copy; 2025 Cod&Go - Programação com Estilo
+</footer>
+
+<script>
+  // Simulação de interatividade para ganhar pontos extras
+  const totalPontosEl = document.getElementById('total-pontos');
+  let totalPontos = parseInt(totalPontosEl.textContent);
+
+  const botoes = document.querySelectorAll('.btn-ganhar');
+
+  botoes.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const linha = btn.closest('tr');
+      const pontosTd = linha.querySelector('td:nth-child(3)');
+      const statusSpan = linha.querySelector('.status');
+
+      // Só permite ganhar pontos se não for concluído
+      if (!btn.disabled) {
+        const pontosExtras = 20;
+        totalPontos += pontosExtras;
+        totalPontosEl.textContent = totalPontos;
+
+        btn.textContent = 'Já ganhou';
+        btn.disabled = true;
+
+        // Atualizar status para "Em progresso" se estava pendente
+        if (statusSpan.classList.contains('pendente')) {
+          statusSpan.textContent = 'Em progresso';
+          statusSpan.classList.remove('pendente');
+          statusSpan.classList.add('emprogresso');
+        }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
