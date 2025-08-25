@@ -73,8 +73,8 @@ $conn->close();
       <ul>
         <li><a href="#">Módulos</a></li>
         <li><a href="#">Linguagens</a></li>
-        <li><a href="#">Minhas Conquistas</a></li>
-        <li><a href="#">Desempenho</a></li>
+        <li><a href="#">Classificaçãp</a></li>
+        <li><a href="#">Desafios</a></li>
       </ul>
     </nav>
   </aside>
