@@ -1,0 +1,75 @@
+
+### 🎓 O que é estrutura semântica?
+
+Imagina que você está construindo um mapa do seu jogo favorito. Cada sala tem uma função: uma é a sala de controle, outra é a sala dos tesouros, outra é a entrada principal. Se você nomear tudo só como "sala genérica", ninguém vai entender nada. Mas se você usar nomes como "entrada", "controle", "armas", tudo fica claro. No HTML, a gente faz a mesma coisa!
+
+➡️ Em vez de usar `<div>` pra tudo, usamos **blocos com significado**, como:
+
+* `<header>` = cabeçalho
+* `<main>` = conteúdo principal
+* `<section>` = seção do conteúdo
+* `<article>` = artigo ou post
+* `<aside>` = barra lateral
+* `<footer>` = rodapé
+
+---
+
+### 🧱 Exemplo prático (Fase 1: Montando o Site)
+
+```html
+<body>
+  <header>
+    <h1>Clube dos Heróis</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Missões</a></li>
+        <li><a href="#">Ranking</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Missão da Semana</h2>
+      <p>Derrote o bug invisível usando seus conhecimentos de HTML!</p>
+    </section>
+
+    <article>
+      <h2>Relato de um Dev</h2>
+      <p>“Hoje aprendi sobre estrutura semântica e ganhei +10 de clareza no código.”</p>
+    </article>
+
+    <aside>
+      <h3>Dica Rápida</h3>
+      <p>Use `<section>` para dividir o conteúdo em partes temáticas.</p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>© 2025 Clube dos Heróis. Codificado com ❤️.</p>
+  </footer>
+</body>
+```
+
+---
+
+### 🏆 Por que isso importa?
+
+✅ **Seu código fica organizado** (tipo inventário de RPG ordenado)
+✅ **Fica mais fácil de manter e atualizar**
+✅ **Ajuda quem usa leitores de tela a navegar**
+✅ **Melhora seu ranking no Google (XP de SEO!)**
+
+---
+
+### 🧩 Mini-Desafio
+
+> 💡 Crie uma página com:
+>
+> * Um `<header>` com o nome do seu time
+> * Um `<nav>` com 3 links
+> * Um `<main>` com 2 `<section>`
+> * Um `<aside>` com uma curiosidade
+> * Um `<footer>` com seu nome e o ano
+
