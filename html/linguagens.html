@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Escolha uma Linguagem para Estudar</title>
+  <link rel="stylesheet" href="../css/form.css" />
+  <style>
+    .language-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .language-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .language-btn:hover {
+      border-color: #008CBA;
+      background-color: #f1f1f1;
+    }
+
+    .language-img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .language-btn span {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .language-btn.selected {
+      border-color: #008CBA;
+      background-color: #d1e7fd;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cod&Go</h1>
+  </header>
+
+  <main class="container">
+    <section class="form-section">
+      <img src="../img/Logo1.png" alt="Mascote" class="mascot"/>
+
+      <h2>Escolha uma Linguagem para Estudar</h2>
+
+      <!-- Aqui estarão os botões de linguagens escolhidas pelo usuário -->
+      <div class="language-buttons">
+        <!-- Exemplo de um botão, ele será gerado dinamicamente a partir do banco -->
+        <a class="language-btn" href="pagina_de_estudo.php?language=HTML">
+          <img src="../img/html.png" alt="HTML" class="language-img" />
+          <span>HTML</span>
+        </a>
+
+        <a class="language-btn" href="pagina_de_estudo.php?language=CSS">
+          <img src="../img/css.png" alt="CSS" class="language-img" />
+          <span>CSS</span>
+        </a>
+
+        <a class="language-btn" href="pagina_de_estudo.php?language=JavaScript">
+          <img src="../img/js.jpg" alt="JavaScript" class="language-img" />
+          <span>JavaScript</span>
+        </a>
+
+        <a class="language-btn" href="pagina_de_estudo.php?language=PHP">
+          <img src="../img/php.png" alt="PHP" class="language-img" />
+          <span>PHP</span>
+        </a>
+
+        <a class="language-btn" href="pagina_de_estudo.php?language=C++">
+          <img src="../img/C++.png" alt="C++" class="language-img" />
+          <span>C++</span>
+        </a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Integrantes do TCC: João Pedro, Matheus Nogueira e Matheus Nunes</p>
+  </footer>
+
+</body>
+</html>
