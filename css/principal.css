@@ -1,93 +1,105 @@
-/* Estilos principais */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-}
+<style>
+  /* Estilos principais */
+  body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+  }
 
-header {
-    background-color: #e0d4ff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+  header, .header-principal {
+      background-color: #e0d4ff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
 
-.header-principal h1 {
-    margin: 0;
-    font-size: 24px;
-}
+  .header-principal h1 {
+      margin: 0;
+      font-size: 24px;
+  }
 
-.usuario-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+  .usuario-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  }
 
-.usuario-header .nome-usuario {
-    font-size: 18px;
-}
+  .usuario-header .nome-usuario {
+      font-size: 18px;
+  }
 
-.avatar-header {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
+  .avatar-header {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+  }
 
-.menu-lateral {
-    width: 200px;
-    background-color: #cceeff;
-    padding: 20px;
-    position: fixed;
-    height: 100%;
-    top: 0;
-}
+  .menu-lateral {
+      width: 200px;
+      background-color: #cceeff;
+      padding: 20px;
+      position: fixed;
+      height: 100%;
+      top: 0;
+  }
 
-.menu-lateral nav ul {
-    list-style-type: none;
-    padding: 0;
-}
+  .menu-lateral nav ul {
+      list-style-type: none;
+      padding: 0;
+  }
 
-.menu-lateral nav ul li {
-    margin: 10px 0;
-}
+  .menu-lateral nav ul li {
+      margin: 10px 0;
+  }
 
-.menu-lateral nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-}
+  .menu-lateral nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+  }
 
-.painel-container {
-    margin-left: 220px;
-    padding: 20px;
-}
+  .painel-container {
+      margin-left: 220px;
+      padding: 20px;
+  }
 
-.barra-progresso {
-    margin: 20px 0;
-}
+  .barra-progresso {
+      margin: 20px 0;
+  }
 
-.barra {
-    width: 100%;
-    background: #f0e5ff;
-    border-radius: 20px;
-    height: 25px;
-    overflow: hidden;
-}
+  .barra {
+      width: 100%;
+      background: #f0e5ff;
+      border-radius: 20px;
+      height: 25px;
+      overflow: hidden;
+  }
 
-.preenchimento {
-    height: 100%;
-    background: #8000ff;
-    width: 0;
-    transition: width 1s ease;
-}
+  .preenchimento {
+      height: 100%;
+      background: #8000ff;
+      width: 0;
+      transition: width 1s ease;
+  }
 
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #e0d4ff;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
+  /* Caso você queira já usar o valor dinâmico de progresso em PHP, ajuste a largura dinamicamente */
+  /* Exemplo: width: <?= $progressoPercent ?>%; */
+
+  #lago {
+      display: block;
+      margin: 30px auto;
+      background: #cceeff;
+      border-radius: 10px;
+  }
+
+  footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #e0d4ff;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+  }
+</style>
