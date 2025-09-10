@@ -13,7 +13,7 @@ $idUsuario = $_SESSION['id'];
 $conn = new mysqli("localhost", "root", "", "codgotemp");
 if ($conn->connect_error) die("Erro de conexão: " . $conn->connect_error);
 
-// Pega o nome do usuário
+// Pega o nome do usuário  
 $stmtUser = $conn->prepare("SELECT nomeUsuario FROM usuario WHERE id = ?");
 $stmtUser->bind_param("i", $idUsuario);
 $stmtUser->execute();
@@ -45,7 +45,6 @@ $conn->close();
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cod&Go - Painel</title>
   <link rel="stylesheet" href="principal.css" />
-  
 </head>
 <body>
 
@@ -58,7 +57,6 @@ $conn->close();
 </header>
 
 <main class="painel-container">
-  <!-- Menu lateral -->
   <aside class="menu-lateral">
     <img src="../img/Logo1.png" alt="Logo" class="logo-menu">
     <nav>
@@ -71,12 +69,10 @@ $conn->close();
     </nav>
   </aside>
 
-  <!-- Conteúdo principal -->
   <section class="conteudo-principal">
     <div class="painel-central">
       <h2>Painel Principal</h2>
 
-      <!-- Barra de progresso -->
       <div class="barra-progresso">
         <label>Progresso:</label>
         <div class="barra">
@@ -84,7 +80,6 @@ $conn->close();
         </div>
       </div>
 
-      <!-- Canvas do peixe -->
       <canvas id="lago" width="800" height="300"></canvas>
     </div>
   </section>
@@ -94,58 +89,11 @@ $conn->close();
   <p>Integrantes do TCC: João Pedro, Matheus Nogueira, Marcus Evaristo Rocha, Matheus Nunes</p>
 </footer>
 
-<!-- Script do peixe -->
+<!-- Passando a variável PHP para JS -->
 <script>
-const canvas = document.getElementById("lago");
-const ctx = canvas.getContext("2d");
-
-let peixe = {
-  largura: 80,
-  altura: 80,
-  amplitude: 25,
-  frequencia: 0.02
-};
-
-let tempo = 0;
-
-// Posição X baseada no progresso
-let progressoUsuario = <?= $progressoPercent ?>;
-let peixeX = (canvas.width * progressoUsuario) / 100;
-
-// Carrega imagem do peixe
-const imgPeixe = new Image();
-imgPeixe.src = "../img/Logo1.png";
-
-imgPeixe.onload = function () {
-  atualizar();
-};
-
-function desenharLago() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "#cceeff";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-
-function desenharPeixe(x, y, angulo) {
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.rotate(angulo);
-  ctx.drawImage(imgPeixe, -peixe.largura/2, -peixe.altura/2, peixe.largura, peixe.altura);
-  ctx.restore();
-}
-
-function atualizar() {
-  tempo += peixe.frequencia;
-
-  let y = canvas.height / 2 + Math.sin(tempo * 2 * Math.PI) * peixe.amplitude;
-  let inclinacao = Math.cos(tempo * 2 * Math.PI) * 0.3;
-
-  desenharLago();
-  desenharPeixe(peixeX, y, inclinacao);
-
-  requestAnimationFrame(atualizar);
-}
+  const progressoUsuario = <?= $progressoPercent ?>;
 </script>
+<script src="script-peixe.js"></script>
 
 </body>
 </html>
