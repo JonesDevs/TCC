@@ -45,15 +45,7 @@ $conn->close();
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cod&Go - Painel</title>
   <link rel="stylesheet" href="principal.css" />
-  <style>
-    .barra-progresso { margin: 20px 0; }
-    .barra { width: 100%; background: #f0e5ff; border-radius: 20px; height: 25px; overflow: hidden; }
-    .preenchimento { height: 100%; background: #8000ff; width: <?= $progressoPercent ?>%; transition: width 1s ease; }
-    #lago { display: block; margin: 30px auto; background: #cceeff; border-radius: 10px; }
-    .header-principal { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: #e0d4ff; }
-    .avatar-header { width: 50px; height: 50px; border-radius: 50%; }
-    .usuario-header { display: flex; align-items: center; gap: 10px; }
-  </style>
+  
 </head>
 <body>
 
