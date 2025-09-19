@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Set-2025 às 19:43
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.1.12
+-- Tempo de geração: 19/09/2025 às 04:49
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `escolha`
+-- Estrutura para tabela `escolha`
 --
 
 CREATE TABLE `escolha` (
@@ -33,17 +33,10 @@ CREATE TABLE `escolha` (
   `idLinguagem` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Extraindo dados da tabela `escolha`
---
-
-INSERT INTO `escolha` (`idForms`, `id`, `idLinguagem`) VALUES
-(3, 5, 1);
-
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `linguagem`
+-- Estrutura para tabela `linguagem`
 --
 
 CREATE TABLE `linguagem` (
@@ -52,7 +45,7 @@ CREATE TABLE `linguagem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `linguagem`
+-- Despejando dados para a tabela `linguagem`
 --
 
 INSERT INTO `linguagem` (`idLinguagem`, `nomeLinguagem`) VALUES
@@ -66,7 +59,7 @@ INSERT INTO `linguagem` (`idLinguagem`, `nomeLinguagem`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura para tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -78,22 +71,18 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Despejando dados para a tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nomeUsuario`, `email`, `senha`, `dataCadastro`) VALUES
-(1, 'BucetaGames', 'bucegames123@gmail.com', '$2y$10$z/YSOR0./YFOdCHyqez.OuYgvqQFPSCY2NJ.HbZScf.f.X4A5BP8.', NULL),
-(2, 'BuceGamer', 'bucetagamer123@gmail.com', '$2y$10$.tEru9TyUNvvTZUXI13Vreje13KBO8avMZaRW0dLJ.FP5DhQqmrKO', NULL),
-(3, 'BucetaGamer', 'bucetagamer123@gmail.com', '$2y$10$Typ7xn8PYVNaPQPONY/weOSO7VRVzUPYo4DysSLInMBXHxnaOtf9e', NULL),
-(4, 'BucetaGamer', 'bucetinhagamer123@gmail.com', '$2y$10$4gBKwlHnHu949fCQNO5lY.m3CW1qKLq3g9ZNww8qmJi9flzNeJ5PK', NULL),
-(5, 'BucetaGamer', 'bucetinhagamer123@gmail.com', '$2y$10$sshG/1XTyu1oUY.C.4SLSOX8JCSHDsrmDOmPzwdF28lea6RhROYiW', NULL);
+(1, 'Jones', 'jones@gmail.com', '$2y$10$6GEXjHb5MtVZMgHsjYgbwORgrQ6Q.FTNfFtpKynQ3glwmKuWb72Zu', NULL);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `escolha`
+-- Índices de tabela `escolha`
 --
 ALTER TABLE `escolha`
   ADD PRIMARY KEY (`idForms`),
@@ -101,26 +90,26 @@ ALTER TABLE `escolha`
   ADD KEY `idLinguagem` (`idLinguagem`);
 
 --
--- Índices para tabela `linguagem`
+-- Índices de tabela `linguagem`
 --
 ALTER TABLE `linguagem`
   ADD PRIMARY KEY (`idLinguagem`);
 
 --
--- Índices para tabela `usuario`
+-- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `escolha`
 --
 ALTER TABLE `escolha`
-  MODIFY `idForms` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idForms` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `linguagem`
@@ -132,14 +121,14 @@ ALTER TABLE `linguagem`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `escolha`
+-- Restrições para tabelas `escolha`
 --
 ALTER TABLE `escolha`
   ADD CONSTRAINT `escolha_ibfk_1` FOREIGN KEY (`id`) REFERENCES `usuario` (`id`),
@@ -149,3 +138,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
