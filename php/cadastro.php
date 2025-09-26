@@ -145,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </form>
       
       <div class="register-link">
-        Já tem uma conta? <a href="login.html">Fazer login</a>
+        Já tem uma conta? <a href="login.php">Fazer login</a>
       </div>
     </div>
   </main>

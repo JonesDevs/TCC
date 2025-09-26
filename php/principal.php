@@ -22,17 +22,25 @@ $rowUser = $resultUser->fetch_assoc();
 $usuario = $rowUser['nomeUsuario'];
 $stmtUser->close();
 
-// Quantas linguagens o usuário já escolheu
-$stmtCount = $conn->prepare("SELECT COUNT(*) as total FROM escolha WHERE id = ?");
-$stmtCount->bind_param("i", $idUsuario);
-$stmtCount->execute();
-$resultCount = $stmtCount->get_result();
-$rowCount = $resultCount->fetch_assoc();
-$linguagensEscolhidas = $rowCount['total'];
-$stmtCount->close();
+// Busca linguagens escolhidas pelo usuário
+$stmtEscolhas = $conn->prepare("
+    SELECT l.nomeLinguagem 
+    FROM escolha e
+    INNER JOIN linguagem l ON e.idLinguagem = l.idLinguagem
+    WHERE e.id = ?
+");
+$stmtEscolhas->bind_param("i", $idUsuario);
+$stmtEscolhas->execute();
+$resultEscolhas = $stmtEscolhas->get_result();
 
-// Total de linguagens disponíveis (6)
+$linguagens = [];
+while ($row = $resultEscolhas->fetch_assoc()) {
+    $linguagens[] = $row['nomeLinguagem'];
+}
+$stmtEscolhas->close();
+
 $totalLinguagens = 6;
+$linguagensEscolhidas = count($linguagens);
 $progressoPercent = ($linguagensEscolhidas / $totalLinguagens) * 100;
 
 $conn->close();
@@ -44,7 +52,7 @@ $conn->close();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cod&Go - Painel</title>
-  <link rel="stylesheet" href="principal.css" />
+  <link rel="stylesheet" href="../css/principal.css" />
 </head>
 <body>
 
@@ -52,7 +60,7 @@ $conn->close();
   <h1 class="logo-titulo">Cod&Go</h1>
   <div class="usuario-header">
     <span class="nome-usuario">Olá, <?= htmlspecialchars($usuario) ?>!</span>
-    <img src="../img/avatar.png" alt="Avatar do usuário" class="avatar-header">
+    <img src="../img/avatar.jpg" alt="Avatar do usuário" class="avatar-header" id="avatar-btn">
   </div>
 </header>
 
@@ -89,11 +97,28 @@ $conn->close();
   <p>Integrantes do TCC: João Pedro, Matheus Nogueira, Marcus Evaristo Rocha, Matheus Nunes</p>
 </footer>
 
-<!-- Passando a variável PHP para JS -->
 <script>
   const progressoUsuario = <?= $progressoPercent ?>;
 </script>
-<script src="script-peixe.js"></script>
+<script src="../js/peixe.js"></script>
+
+<script>
+  const avatarBtn = document.getElementById("avatar-btn");
+  const overlay = document.getElementById("usuario-overlay");
+  const fecharMenu = document.getElementById("fechar-menu");
+
+  avatarBtn.addEventListener("click", () => {
+    overlay.classList.add("show");
+  });
+
+  fecharMenu.addEventListener("click", () => {
+    overlay.classList.remove("show");
+  });
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) overlay.classList.remove("show");
+  });
+</script>
 
 </body>
 </html>

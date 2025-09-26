@@ -154,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit" class="btn-primary">Entrar</button>
       </form>
 
-      <p class="register-link">Ainda não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+      <p class="register-link">Ainda não tem conta? <a href="cadastro.php">Cadastre-se</a></p>
     </div>
   </main>
 
