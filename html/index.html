@@ -4,7 +4,147 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cod&Go</title>
-  <link rel="stylesheet" href="../css/index.css">
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #2a004f, #3c0077, #4b0082);
+      color: #f4f1ff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.08);
+      text-align: center;
+      padding: 20px 0;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #e1cfff;
+      text-shadow: 0 0 10px #a570ff;
+      user-select: none;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      max-width: 900px;
+      width: 100%;
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .logo-area img {
+      width: 240px;
+      height: auto;
+      filter: drop-shadow(0 0 12px #a570ff);
+      user-select: none;
+    }
+
+    .text-area {
+      max-width: 450px;
+    }
+
+    .text-area h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #ffffff;
+      text-shadow: 0 0 10px #a570ff;
+    }
+
+    .text-area p {
+      font-size: 1.1rem;
+      color: #d8c8ff;
+      margin-bottom: 30px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      border: none;
+      padding: 12px 30px;
+      margin: 8px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(128, 0, 255, 0.4);
+    }
+
+    .btn-primary {
+      background-color: #8000ff;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: #6a00cc;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(164, 122, 255, 0.6);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border: 2px solid #b19cff;
+      color: #d8c8ff;
+    }
+
+    .btn-secondary:hover {
+      background-color: #b19cff;
+      color: #2a004f;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background-color: rgba(255, 255, 255, 0.08);
+      text-align: center;
+      padding: 15px;
+      color: #cdbaff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+      user-select: none;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        flex-direction: column;
+        padding: 30px;
+      }
+
+      .text-area h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -27,7 +167,7 @@
   </main>
 
   <footer>
-    <p>Integrantes do TCC: João Pedro, Matheus Nogueira, Marcus Evaristo Rocha, Matheus Nunes</p>
+    Integrantes do TCC: João Pedro, Matheus Nogueira, Marcus Evaristo Rocha, Matheus Nunes
   </footer>
 
 </body>
