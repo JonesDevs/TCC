@@ -5,33 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Desafios - Cod&Go</title>
   <style>
-    /* Reset básico */
+    /* ======== RESET ======== */
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f6ff;
-      margin: 0;
-      padding: 0;
-      color: #3b0a66;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at top, #2b0052 0%, #0c0015 100%);
+      color: #f1e8ff;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
+    /* ======== HEADER ======== */
     header {
-      background: #d8c8ff;
-      padding: 15px 25px;
+      background: linear-gradient(90deg, #3a007a, #5d00a8);
+      padding: 18px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      border-bottom: 1px solid #b86bff33;
     }
 
     .logo {
       font-weight: 900;
-      font-size: 28px;
-      color: #4b0082;
+      font-size: 30px;
+      color: #fff;
       letter-spacing: 2px;
+      text-shadow: 0 0 10px #b86bff;
       user-select: none;
     }
 
@@ -43,93 +48,101 @@
 
     .usuario-info span {
       font-weight: 600;
+      color: #f5e8ff;
+      text-shadow: 0 0 6px #8b4bff;
     }
 
     .avatar {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      border: 2px solid #8000ff;
-      object-fit: cover;
-      box-shadow: 0 0 8px #b199ff88;
+      border: 2px solid #b86bff;
+      box-shadow: 0 0 10px #b86bff;
     }
 
+    /* ======== CONTEÚDO ======== */
     main {
-      max-width: 900px;
-      margin: 40px auto 120px;
+      max-width: 950px;
+      margin: 50px auto 130px;
       padding: 0 20px;
     }
 
     h2 {
       text-align: center;
-      font-size: 32px;
-      margin-bottom: 25px;
-      color: #4b0082;
-      user-select: none;
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: #d6b6ff;
+      text-shadow: 0 0 12px #a24bff;
+      letter-spacing: 1px;
     }
 
     .progresso {
-      background: #d9ccff;
-      padding: 15px 25px;
-      border-radius: 12px;
+      background: linear-gradient(135deg, #4e0099, #2b005c);
+      padding: 18px 25px;
+      border-radius: 16px;
       margin-bottom: 40px;
-      box-shadow: 0 3px 10px #b199ff55;
+      box-shadow: 0 0 15px #6b00ff66;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-weight: 600;
       font-size: 18px;
+      color: #fff;
     }
 
     .progresso span {
-      background: #8000ff;
-      color: white;
-      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 10px 18px;
       border-radius: 30px;
-      box-shadow: 0 2px 6px #5c00b3;
+      box-shadow: 0 0 10px #8c4bff55;
+      font-weight: 700;
     }
 
+    /* ======== TABELA ======== */
     table {
       width: 100%;
       border-collapse: separate;
-      border-spacing: 0 12px;
+      border-spacing: 0 15px;
     }
 
     thead tr {
-      background-color: #8000ff;
+      background: linear-gradient(90deg, #6a00d1, #a64bff);
       color: #fff;
-      border-radius: 12px;
-      user-select: none;
+      text-align: left;
     }
 
     thead th {
-      padding: 14px 12px;
+      padding: 16px 14px;
       font-weight: 700;
-      text-align: left;
+      font-size: 15px;
+      text-transform: uppercase;
       border-top-left-radius: 12px;
       border-top-right-radius: 12px;
     }
 
     tbody tr {
-      background: #e0d4ff;
-      box-shadow: 0 2px 8px #b199ff66;
-      transition: transform 0.2s ease;
-      cursor: pointer;
+      background: #1a0033;
+      color: #e9d7ff;
       border-radius: 12px;
+      box-shadow: 0 6px 14px rgba(128, 0, 255, 0.25);
+      transition: all 0.25s ease;
+      cursor: pointer;
     }
 
     tbody tr:hover {
-      background: #c9baff;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px #8000ffaa;
+      background: #26004d;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(128, 0, 255, 0.45);
     }
 
     tbody td {
-      padding: 18px 12px;
+      padding: 18px 14px;
       font-weight: 600;
       vertical-align: middle;
     }
 
+    /* ======== STATUS ======== */
     .status {
       padding: 6px 16px;
       border-radius: 20px;
@@ -137,52 +150,67 @@
       font-size: 14px;
       width: fit-content;
       user-select: none;
+      text-align: center;
     }
 
     .status.pendente {
       background-color: #ffb300;
-      color: #4a3c00;
+      color: #351f00;
+      box-shadow: 0 0 10px #ffb30066;
     }
 
     .status.concluido {
       background-color: #3fc970;
-      color: #05430f;
+      color: #002a11;
+      box-shadow: 0 0 10px #3fc97055;
     }
 
     .status.emprogresso {
-      background-color: #7266ff;
+      background-color: #6a5cff;
       color: white;
+      box-shadow: 0 0 10px #6a5cff88;
     }
 
+    /* ======== BOTÃO ======== */
+    .btn-ganhar {
+      background: linear-gradient(90deg, #7a00ff, #a64bff);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(128, 0, 255, 0.4);
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .btn-ganhar:hover:not(:disabled) {
+      background: linear-gradient(90deg, #a64bff, #c685ff);
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(180, 100, 255, 0.6);
+    }
+
+    .btn-ganhar:disabled {
+      background: #3a005f;
+      color: #aaa;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* ======== FOOTER ======== */
     footer {
       position: fixed;
       bottom: 0;
       width: 100%;
-      background: #d8c8ff;
+      background: linear-gradient(90deg, #3a007a, #5d00a8);
       padding: 14px 0;
       text-align: center;
       font-weight: 600;
-      color: #4b0082;
-      user-select: none;
-      box-shadow: 0 -3px 6px rgba(0,0,0,0.1);
-    }
-
-    /* Botão para ganhar pontos extras */
-    .btn-ganhar {
-      background-color: #4b0082;
-      color: white;
-      border: none;
-      padding: 10px 22px;
-      font-weight: 700;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 4px 12px #8000ffaa;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-
-    .btn-ganhar:hover {
-      background-color: #3a006d;
+      color: #e9d7ff;
+      text-shadow: 0 0 6px #b86bff;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.5px;
     }
   </style>
 </head>
@@ -248,7 +276,7 @@
 </main>
 
 <footer>
-  &copy; 2025 Cod&Go - Programação com Estilo
+  &copy; 2025 Cod&Go — Programação com Estilo
 </footer>
 
 <script>
@@ -261,10 +289,8 @@
   botoes.forEach((btn) => {
     btn.addEventListener('click', () => {
       const linha = btn.closest('tr');
-      const pontosTd = linha.querySelector('td:nth-child(3)');
       const statusSpan = linha.querySelector('.status');
 
-      // Só permite ganhar pontos se não for concluído
       if (!btn.disabled) {
         const pontosExtras = 20;
         totalPontos += pontosExtras;
@@ -273,7 +299,6 @@
         btn.textContent = 'Já ganhou';
         btn.disabled = true;
 
-        // Atualizar status para "Em progresso" se estava pendente
         if (statusSpan.classList.contains('pendente')) {
           statusSpan.textContent = 'Em progresso';
           statusSpan.classList.remove('pendente');
