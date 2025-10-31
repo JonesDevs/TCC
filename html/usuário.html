@@ -6,100 +6,187 @@
   <title>Perfil do Usuário - Cod&Go</title>
   <link rel="stylesheet" href="../css/principal.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f6ff;
+    /* ===== RESET ===== */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
-    .perfil-container {
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #1a002f, #0b0018);
+      color: #f0e6ff;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 50px 20px;
-      min-height: calc(100vh - 140px); /* header + footer */
     }
 
-    .foto-usuario {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #8000ff;
-      margin-bottom: 20px;
-    }
-
-    .info-usuario {
-      background: #e0d4ff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 400px;
-      width: 100%;
-    }
-
-    .info-usuario h2 {
-      margin-bottom: 10px;
-      color: #4b0082;
-    }
-
-    .info-usuario p {
-      margin: 8px 0;
-      font-size: 1.1em;
-    }
-
-    /* Estilo do botão */
-    .btn-editar {
-      margin-top: 25px;
-      padding: 12px 25px;
-      background-color: #8000ff;
-      border: none;
-      border-radius: 25px;
-      color: white;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-editar:hover {
-      background-color: #5a00b3;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #e0d4ff;
-    }
-
-    .header-principal {
+    /* ===== CABEÇALHO ===== */
+    header.header-principal {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
-      background: #e0d4ff;
+      background: rgba(90, 0, 160, 0.4);
+      backdrop-filter: blur(10px);
+      padding: 15px 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 10;
     }
 
-    .avatar-header {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+    .logo-titulo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #cbb2ff;
+      letter-spacing: 1px;
     }
 
     .usuario-header {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      color: #e6d6ff;
+      font-size: 1rem;
     }
 
-    .logo-titulo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #4b0082;
+    .avatar-header {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid #a36cff;
+    }
+
+    /* ===== BANNER / CAPA ===== */
+    .banner {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #400080, #8a2be2);
+      background-image: url("../img/banner.jpg");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10, 0, 30, 0.3), rgba(10, 0, 30, 0.8));
+    }
+
+    .banner h2 {
+      position: relative;
+      color: #f8efff;
+      font-size: 2.2rem;
+      font-weight: 600;
+      text-shadow: 0 0 15px rgba(180, 120, 255, 0.8);
+    }
+
+    /* ===== PERFIL ===== */
+    main.perfil-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 60px 20px;
+      margin-top: -80px; /* sobrepõe a capa */
+      text-align: center;
+    }
+
+    .foto-usuario {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #a36cff;
+      box-shadow: 0 0 25px rgba(163, 108, 255, 0.6);
+      background-color: #1f0039;
+      margin-bottom: 25px;
+      z-index: 2;
+    }
+
+    .info-usuario {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      max-width: 420px;
+      width: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .info-usuario:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(163, 108, 255, 0.5);
+    }
+
+    .info-usuario h2 {
+      color: #d6b6ff;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .info-usuario p {
+      margin: 10px 0;
+      font-size: 1.1rem;
+      color: #e7dfff;
+    }
+
+    /* ===== BOTÃO ===== */
+    .btn-editar {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 35px;
+      background: linear-gradient(135deg, #a36cff, #6a1b9a);
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(163, 108, 255, 0.3);
+    }
+
+    .btn-editar:hover {
+      background: linear-gradient(135deg, #b67bff, #8a2be2);
+      box-shadow: 0 0 25px rgba(182, 123, 255, 0.6);
+      transform: scale(1.05);
+    }
+
+    /* ===== RODAPÉ ===== */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(60, 0, 100, 0.4);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbb2ff;
+      font-size: 0.95rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 600px) {
+      .info-usuario {
+        padding: 25px;
+      }
+      .foto-usuario {
+        width: 120px;
+        height: 120px;
+      }
+      .banner h2 {
+        font-size: 1.6rem;
+      }
     }
   </style>
 </head>
@@ -120,6 +207,10 @@
   </div>
 </header>
 
+<section class="banner">
+  <h2>Seu Perfil Pessoal</h2>
+</section>
+
 <main class="perfil-container">
   <img src="../img/avatar.png" alt="Foto do Usuário" class="foto-usuario">
 
@@ -138,3 +229,4 @@
 
 </body>
 </html>
+
