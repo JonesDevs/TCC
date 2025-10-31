@@ -6,95 +6,129 @@
   <title>Classificação - Cod&Go</title>
   <link rel="stylesheet" href="../css/principal.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f6ff;
+    /* ======= RESET E BASE ======= */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #1a0033, #3a0066);
+      color: #f0e6ff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ======= CABEÇALHO ======= */
     .header-principal {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
-      background: #e0d4ff;
+      padding: 15px 30px;
+      background: rgba(60, 0, 120, 0.7);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
-    .avatar-header {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+    .logo-titulo {
+      font-size: 26px;
+      font-weight: 700;
+      color: #b388ff;
+      letter-spacing: 1px;
     }
 
     .usuario-header {
       display: flex;
       align-items: center;
       gap: 10px;
+      color: #d1b3ff;
+      font-weight: 500;
     }
 
-    .logo-titulo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #4b0082;
+    .avatar-header {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #b388ff;
     }
 
+    /* ======= CONTEÚDO PRINCIPAL ======= */
     main {
+      flex: 1;
       max-width: 800px;
-      margin: 40px auto 100px;
+      margin: 60px auto 100px;
       padding: 0 20px;
+      text-align: center;
     }
 
     h2 {
-      color: #4b0082;
-      text-align: center;
+      color: #d1b3ff;
       margin-bottom: 30px;
+      font-size: 1.8em;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      background-color: #e0d4ff;
-      border-radius: 10px;
+      background: rgba(50, 0, 100, 0.85);
+      border-radius: 15px;
       overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
     }
 
     thead {
-      background-color: #8000ff;
+      background: linear-gradient(135deg, #7b2fff, #b366ff);
       color: white;
+      font-weight: 600;
     }
 
     th, td {
       padding: 15px;
       text-align: center;
+      font-size: 1.05em;
     }
 
     tbody tr:nth-child(even) {
-      background-color: #d9ccff;
+      background-color: rgba(255, 255, 255, 0.05);
     }
 
     tbody tr:hover {
-      background-color: #c1aaff;
+      background-color: rgba(179, 102, 255, 0.15);
+      transition: background-color 0.3s ease;
     }
 
+    /* ======= RODAPÉ ======= */
     footer {
       text-align: center;
       padding: 15px;
-      background-color: #e0d4ff;
+      background-color: rgba(40, 0, 80, 0.9);
+      color: #cfaeff;
+      font-size: 0.9em;
       position: fixed;
       width: 100%;
       bottom: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    @media (max-width: 600px) {
+      table th, table td {
+        padding: 10px;
+        font-size: 0.9em;
+      }
     }
   </style>
 </head>
 <body>
 
 <?php
-  // Dados exemplo - geralmente vêm do banco de dados
+  // Dados de exemplo - geralmente vêm do banco de dados
   $usuario = "Maria Silva";
 
-  // Exemplo array com usuários para classificação
+  // Exemplo de array com usuários para classificação
   $classificacao = [
     ['nome' => 'João Pedro', 'pontos' => 250, 'modulos' => 10],
     ['nome' => 'Matheus Nogueira', 'pontos' => 230, 'modulos' => 9],
@@ -126,4 +160,17 @@
       <?php foreach ($classificacao as $usuarioClass): ?>
         <tr>
           <td><?= htmlspecialchars($usuarioClass['nome']) ?></td>
-          <td><?= htmlspecialchars($usuarioClass['pon]()
+          <td><?= htmlspecialchars($usuarioClass['pontos']) ?></td>
+          <td><?= htmlspecialchars($usuarioClass['modulos']) ?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</main>
+
+<footer>
+  <p>Integrantes do TCC: João Pedro, Matheus Nogueira, Marcus Evaristo Rocha, Matheus Nunes</p>
+</footer>
+
+</body>
+</html>
