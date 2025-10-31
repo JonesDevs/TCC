@@ -1,18 +1,60 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Editar Perfil - Cod&Go</title>
+<title>Editar Perfil - Cod&Go</title>
   <link rel="stylesheet" href="../css/principal.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f9f6ff;
+    /* ======= RESET E BASE ======= */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #1a0033, #3a0066);
+      color: #f0e6ff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ======= CABEÇALHO ======= */
+    .header-principal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(60, 0, 120, 0.7);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .logo-titulo {
+      font-size: 26px;
+      font-weight: 700;
+      color: #b388ff;
+      letter-spacing: 1px;
+    }
+
+    .usuario-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #d1b3ff;
+      font-weight: 500;
+    }
+
+    .avatar-header {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #b388ff;
+    }
+
+    /* ======= CONTAINER PRINCIPAL ======= */
     .editar-container {
       max-width: 500px;
       margin: 60px auto 100px;
@@ -20,23 +62,40 @@
       padding: 30px 40px;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin: 80px auto;
+      background: rgba(50, 0, 100, 0.85);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease;
+    }
+
+    .editar-container:hover {
+      transform: translateY(-5px);
     }
 
     h2 {
       text-align: center;
       color: #4b0082;
       margin-bottom: 30px;
+      color: #d1b3ff;
+      margin-bottom: 25px;
+      font-weight: 600;
     }
 
     form {
       display: flex;
       flex-direction: column;
       gap: 20px;
+      gap: 18px;
     }
 
     label {
       font-weight: bold;
       color: #4b0082;
+      font-weight: 600;
+      color: #e0ccff;
     }
 
     input[type="text"],
@@ -45,38 +104,63 @@
       padding: 10px;
       border-radius: 8px;
       border: 1px solid #8000ff;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
       font-size: 1em;
       width: 100%;
       box-sizing: border-box;
+      background: #2a0052;
+      color: #f5ebff;
+      outline: none;
+      transition: box-shadow 0.3s ease;
     }
 
+    input:focus {
+      box-shadow: 0 0 8px #a366ff;
+    }
+
+    /* ======= BOTÃO ======= */
     .btn-salvar {
       padding: 12px;
       background-color: #8000ff;
+      padding: 14px;
+      background: linear-gradient(135deg, #7b2fff, #b366ff);
       border: none;
       border-radius: 25px;
       color: white;
       font-size: 1.1em;
+      font-weight: 600;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(123, 47, 255, 0.4);
     }
 
     .btn-salvar:hover {
       background-color: #5a00b3;
+      background: linear-gradient(135deg, #a366ff, #d1b3ff);
+      box-shadow: 0 6px 20px rgba(179, 102, 255, 0.6);
+      transform: scale(1.03);
     }
 
     .btn-voltar {
       margin-top: 15px;
+      margin-top: 18px;
       text-align: center;
     }
 
     .btn-voltar a {
       color: #8000ff;
+      color: #cda6ff;
       text-decoration: none;
       font-weight: bold;
+      font-weight: 600;
+      transition: color 0.3s ease;
     }
 
     .btn-voltar a:hover {
+      color: #ffffff;
       text-decoration: underline;
     }
 
@@ -106,13 +190,25 @@
       color: #4b0082;
     }
 
+    /* ======= RODAPÉ ======= */
     footer {
       text-align: center;
       padding: 15px;
       background-color: #e0d4ff;
+      background-color: rgba(40, 0, 80, 0.9);
+      color: #cfaeff;
+      font-size: 0.9em;
       position: fixed;
       width: 100%;
       bottom: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    @media (max-width: 600px) {
+      .editar-container {
+        margin: 60px 20px;
+        padding: 30px 20px;
+      }
     }
   </style>
 </head>
@@ -128,34 +224,24 @@
   <h1 class="logo-titulo">Cod&Go</h1>
   <div class="usuario-header">
     <span class="nome-usuario">Olá, <?= htmlspecialchars($usuario) ?>!</span>
+    <span class="nome-usuario">Olá, Maria Silva!</span>
     <img src="../img/avatar.png" alt="Avatar do usuário" class="avatar-header">
   </div>
 </header>
-
-<div class="editar-container">
-  <h2>Editar Perfil</h2>
+@@ -137,10 +181,10 @@ <h2>Editar Perfil</h2>
 
   <form action="salvar_perfil.php" method="post" enctype="multipart/form-data">
     <label for="nome">Nome:</label>
     <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($usuario) ?>" required>
+    <input type="text" id="nome" name="nome" value="Maria Silva" required>
 
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" value="<?= htmlspecialchars($email) ?>" required>
+    <input type="email" id="email" name="email" value="maria@example.com" required>
 
     <label for="foto">Foto do Perfil (jpg, png):</label>
     <input type="file" id="foto" name="foto" accept="image/png, image/jpeg">
-
-    <button type="submit" class="btn-salvar">Salvar Alterações</button>
-  </form>
-
-  <div class="btn-voltar">
-    <a href="perfil.php">&larr; Voltar ao Perfil</a>
-  </div>
-</div>
-
-<footer>
-  <p>Integrantes do TCC: João Pedro, Matheus Nogueira, Marcus Evaristo Rocha, Matheus Nunes</p>
-</footer>
+@@ -159,3 +203,4 @@ <h2>Editar Perfil</h2>
 
 </body>
 </html>
