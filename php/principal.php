@@ -45,6 +45,7 @@ $progressoPercent = ($linguagensEscolhidas / $totalLinguagens) * 100;
 
 $conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
