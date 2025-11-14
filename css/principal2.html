@@ -122,6 +122,7 @@
     <div class="usuario-header">
       <span class="nome-usuario">Olá, Usuário!</span>
       <img src="https://i.pravatar.cc/40" alt="Avatar do usuário" class="avatar-header" id="avatar-btn" />
+      <button class="btn-editar" id="btn-editar">Editar Perfil</button>
     </div>
   </header>
 
@@ -165,6 +166,16 @@
       </div>
     </section>
   </main>
+
+
+  <!-- Popup de Edição -->
+  <div class="popup" id="popup-editar">
+    <h3>Editar Perfil</h3>
+    <input type="text" id="nome-usuario" placeholder="Nome do Usuário" />
+    <input type="email" id="email-usuario" placeholder="E-mail" />
+    <button id="btn-salvar">Salvar Alterações</button>
+    <button id="btn-fechar-popup">Fechar</button>
+  </div>
 
   <footer style="text-align:center; padding:1rem; background:#3f2a6e; color:#c39eff;">
     <p>Integrantes do TCC: João Pedro, Matheus Nogueira, Marcus Evaristo Rocha, Matheus Nunes</p>
@@ -311,6 +322,30 @@
     btnFechar.addEventListener('click',()=>{ popup.style.display='none'; });
 
     atualizarBarra(progressoUsuario);
+
+ const btnEditar = document.getElementById('btn-editar');
+    const popupEditar = document.getElementById('popup-editar');
+    const btnFecharPopup = document.getElementById('btn-fechar-popup');
+    const btnSalvar = document.getElementById('btn-salvar');
+
+    // Mostrar o popup ao clicar no botão
+    btnEditar.addEventListener('click', () => {
+      popupEditar.style.display = 'block';
+    });
+
+    // Fechar o popup
+    btnFecharPopup.addEventListener('click', () => {
+      popupEditar.style.display = 'none';
+    });
+
+    // Lógica para salvar as alterações (aqui você pode adicionar funcionalidades para salvar os dados)
+    btnSalvar.addEventListener('click', () => {
+      const nome = document.getElementById('nome-usuario').value;
+      const email = document.getElementById('email-usuario').value;
+      console.log('Nome:', nome, 'E-mail:', email); // Aqui você pode implementar uma lógica para salvar ou atualizar os dados.
+      popupEditar.style.display = 'none';
+    });
+
   </script>
 </body>
 </html>
