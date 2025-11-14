@@ -181,7 +181,7 @@
     <p>Integrantes do TCC: João Pedro, Matheus Nogueira, Marcus Evaristo Rocha, Matheus Nunes</p>
   </footer>
 
-  <script>
+  <script>// === Variáveis de elementos DOM ===
     const preenchimento = document.getElementById('preenchimento');
     const percentual = document.getElementById('percentual');
     const popup = document.getElementById('popup-licao');
@@ -196,6 +196,14 @@
 
     let progressoUsuario = 0;
     function atualizarBarra(p){ preenchimento.style.width = p+'%'; percentual.textContent = p+'%'; }
+
+// ARRUMAR ISSO DEPOIS ( É A VARIÁVEL PROGRESSO DO USUÁRIO, SEM XAMP ELE DA ERRO, PRECISA DO XAMP PARA TESTAR
+// === Variáveis do Progresso ===
+    // let progressoUsuario = <?= $progressoPercent ?>; // PHP envia o progresso calculado
+   // function atualizarBarra(p) {
+      //  preenchimento.style.width = p + '%';
+       // percentual.textContent = p + '%';
+   // } 
 
     const peixe = { x: 50, y: height/2, radius: 20, speed: 2, color: '#d3aaff' };
     const baias = [
@@ -307,16 +315,17 @@
         telaIntroducao.style.display='flex';
         return;
       }
-      progressoUsuario = Math.min(100, ((targetBaiaIndex+1)/baias.length)*100);
-      atualizarBarra(progressoUsuario);
-      if(targetBaiaIndex < baias.length-1){
-        baias[targetBaiaIndex+1].bloqueado = false;
-        targetBaiaIndex++;
-        animating = true;
-        animar();
-      } else {
-        alert('Todas as lições concluídas!');
-      }
+        // Atualiza o progresso do usuário
+        progressoUsuario = Math.min(100, ((targetBaiaIndex + 1) / baias.length) * 100);
+        atualizarBarra(progressoUsuario);
+        if (targetBaiaIndex < baias.length - 1) {
+            baias[targetBaiaIndex + 1].bloqueado = false;
+            targetBaiaIndex++;
+            animating = true;
+            animar();
+        } else {
+            alert('Todas as lições concluídas!');
+        }
     });
 
     btnFechar.addEventListener('click',()=>{ popup.style.display='none'; });
