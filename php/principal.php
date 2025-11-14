@@ -9,9 +9,18 @@ if (!isset($_SESSION['id'])) {
 
 $idUsuario = $_SESSION['id'];
 
-// Conexão com o banco
-$conn = new mysqli("localhost", "root", "", "codgotemp");
-if ($conn->connect_error) die("Erro de conexão: " . $conn->connect_error);
+// Conexão com o banco (InfinityFree)
+$conn = new mysqli(
+    "sql100.infinityfree.com",
+    "if0_39760133",
+    "HuSONDu9CUsFc",
+    "if0_39760133_codgotemp"
+);
+
+if ($conn->connect_error) {
+    die("Erro de conexão: " . $conn->connect_error);
+}
+
 
 // Pega o nome do usuário
 $stmtUser = $conn->prepare("SELECT nomeUsuario FROM usuario WHERE id = ?");
