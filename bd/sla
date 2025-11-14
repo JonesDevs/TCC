@@ -1,1 +1,89 @@
+Nesse banco de dados, quero ter um site que, ja estou fazendo. 
+O aluno vai fazer seu cadastro, logar, depois ele vai escolher as linguagens, e ele vai ser mandado para uma tela principal, tipo do duolingo, que ele vai poder realizar atividades que os professores irão mandar 
+O professor, vai cadastrar, logar e certos professores irão ter algumas linguagens disponíveis dependendo da sua formação para acessa-las e postar atividades para os alunos e os alunos resolve-las, caso não postarem, os alunos receberão uma mensagem na tela principal dos modulos falando: " Ainda não há atividades " 
+O banco de dados ta certo em relação ao que iremos fzr?
 
+Seu banco de dados está bastante próximo do que você precisa para o site que está criando, mas tem alguns ajustes e considerações que podem ser feitos para garantir que ele suporte corretamente todas as funcionalidades que você descreveu. Vamos analisar cada parte e fazer algumas sugestões:
+1. Estrutura de Tabelas
+
+
+Tabela usuario: Está adequada para armazenar os dados básicos dos alunos e professores. Mas você precisaria de uma maneira de diferenciar os dois tipos de usuário (aluno e professor). Uma solução seria adicionar um campo, como tipoUsuario, para indicar se o usuário é um aluno ou um professor.
+ALTER TABLE `usuario` ADD `tipoUsuario` ENUM('aluno', 'professor') NOT NULL DEFAULT 'aluno';
+
+
+
+Tabela linguagem: Está boa, pois você está armazenando as linguagens que os professores podem ensinar e os alunos podem escolher. Você pode manter essa estrutura como está.
+
+
+Tabela escolha: A relação entre usuários e linguagens está bem definida. A tabela escolha mostra as linguagens que um aluno escolheu. Porém, pode ser interessante garantir que um aluno não possa escolher a mesma linguagem mais de uma vez. Para isso, você pode adicionar uma chave única (UNIQUE) nos campos id e idLinguagem para evitar duplicação.
+ALTER TABLE `escolha` ADD UNIQUE (`id`, `idLinguagem`);
+
+
+
+Tabela professor: Está boa também, mas você mencionou que a formação do professor pode influenciar as linguagens que ele pode acessar. Para isso, você poderia ter uma tabela adicional que relacione professores às linguagens que eles podem ensinar, e não apenas uma coluna idLinguagem diretamente na tabela professor. Assim, você teria um relacionamento N:M entre professores e linguagens, caso mais de um professor ensine a mesma linguagem.
+
+
+Isso poderia ser feito criando uma tabela professor_linguagem:
+CREATE TABLE `professor_linguagem` (
+  `idProfessor` int(11) NOT NULL,
+  `idLinguagem` int(11) NOT NULL,
+  PRIMARY KEY (`idProfessor`, `idLinguagem`),
+  FOREIGN KEY (`idProfessor`) REFERENCES `professor` (`idProfessor`),
+  FOREIGN KEY (`idLinguagem`) REFERENCES `linguagem` (`idLinguagem`)
+);
+
+
+
+
+
+2. Atividades para Alunos
+Você mencionou que os professores podem criar atividades para os alunos, mas o banco de dados não possui uma tabela específica para essas atividades. Você precisará criar uma tabela para armazenar as atividades, que pode ser relacionada aos professores, alunos e linguagens.
+Sugestão para tabela de atividades:
+CREATE TABLE `atividade` (
+  `idAtividade` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(100) NOT NULL,
+  `descricao` text NOT NULL,
+  `dataPostagem` datetime NOT NULL,
+  `idProfessor` int(11) NOT NULL,
+  `idLinguagem` int(11) NOT NULL,
+  PRIMARY KEY (`idAtividade`),
+  FOREIGN KEY (`idProfessor`) REFERENCES `professor` (`idProfessor`),
+  FOREIGN KEY (`idLinguagem`) REFERENCES `linguagem` (`idLinguagem`)
+);
+
+Tabela para o aluno marcar atividades como "resolvidas":
+Para que os alunos possam interagir com as atividades, você precisará de uma tabela que registre se o aluno completou ou não uma atividade.
+CREATE TABLE `atividade_aluno` (
+  `idAtividade` int(11) NOT NULL,
+  `idAluno` int(11) NOT NULL,
+  `dataResolucao` datetime DEFAULT NULL,
+  PRIMARY KEY (`idAtividade`, `idAluno`),
+  FOREIGN KEY (`idAtividade`) REFERENCES `atividade` (`idAtividade`),
+  FOREIGN KEY (`idAluno`) REFERENCES `usuario` (`id`),
+  CHECK (`dataResolucao` IS NOT NULL OR `dataResolucao` IS NULL)
+);
+
+Essa tabela permite que você registre a data de resolução da atividade, além de controlar quais atividades foram feitas por cada aluno. Se a dataResolucao for NULL, significa que o aluno ainda não completou a atividade.
+3. Mensagens "Ainda não há atividades"
+Isso pode ser facilmente implementado no lado do aplicativo, verificando se há atividades para o aluno na tela principal. No caso de não haver, a mensagem "Ainda não há atividades" pode ser exibida.
+No banco, você pode criar um processo que verifique se há atividades disponíveis para o aluno, com base nas linguagens que ele escolheu. Isso pode ser feito com uma query como esta:
+SELECT a.*
+FROM atividade a
+JOIN escolha e ON a.idLinguagem = e.idLinguagem
+WHERE e.id = <id_do_aluno> AND a.dataPostagem <= NOW()
+ORDER BY a.dataPostagem DESC;
+
+Se essa consulta não retornar nenhum resultado, o sistema pode exibir a mensagem para o aluno.
+4. Considerações Finais
+
+
+Segurança: Não se esqueça de garantir a segurança no login (por exemplo, usando hashing para senhas) e a proteção contra SQL Injection.
+
+
+Relacionamentos: As tabelas estão bem estruturadas para manter os relacionamentos entre usuários, linguagens e atividades, mas talvez você precise adicionar mais colunas dependendo dos detalhes das atividades (como pontuação, respostas dos alunos, etc.).
+
+
+Desempenho: A utilização de índices e chaves primárias já está bem implementada, o que ajudará na performance das consultas.
+
+
+Com essas modificações, seu banco de dados estará mais preparado para suportar o sistema de atividades que você está criando, além de fornecer a flexibilidade necessária para o funcionamento do site.
