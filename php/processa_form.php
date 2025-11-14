@@ -8,10 +8,10 @@ if (!isset($_SESSION['id'])) {
 }
 
 // Conexão com banco
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "codgotemp";
+$host = "sql100.infinityfree.com";
+$user = "if0_39760133";
+$password = "HuSONDu9CUsFc";
+$database = "if0_39760133_codgotemp";
 
 $conn = new mysqli($host, $user, $password, $database);
 if ($conn->connect_error) die("Erro na conexão: " . $conn->connect_error);
