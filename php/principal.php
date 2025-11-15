@@ -208,7 +208,9 @@ $conn->close();
       <!-- Nova Tela Introdução -->
       <div class="painel-central tela-introducao" id="telaIntroducao">
         <h2>Introdução ao Curso</h2>
-        <p>Bem-vindo à introdução do seu curso! Aqui você vai entender o que será ensinado, como funcionam os módulos e o que esperar das próximas lições. Este espaço futuramente puxará as informações diretamente do banco de dados.</p>
+        <p>Bem-vindo à introdução do seu curso! Aqui você vai entender o que será ensinado, 
+            como funcionam os módulos e o que esperar das próximas lições. Este espaço 
+            futuramente puxará as informações diretamente do banco de dados.</p>
         <button class="btn-prosseguir">Avançar</button>
       </div>
     </section>
