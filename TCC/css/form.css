@@ -1,0 +1,148 @@
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgba(128, 0, 255, 0.08); /* fundo lilás claro */
+  color: #4b0082;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  background-color: #8000ff;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(128, 0, 255, 0.3);
+}
+
+/* Footer */
+footer {
+  background-color: #8000ff;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 -4px 10px rgba(128, 0, 255, 0.3);
+}
+
+/* Container */
+.container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Box principal */
+.form-section {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 6px 20px rgba(128, 0, 255, 0.3);
+  text-align: center;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+/* Mascote */
+.mascot {
+  width: 100px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 8px rgba(128, 0, 255, 0.3));
+}
+
+/* Título */
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  color: #8000ff;
+}
+
+/* Grid de opções */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Cada opção */
+.option {
+  position: relative;
+  background-color: #f5f0ff;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(128, 0, 255, 0.25);
+  border: 1px solid #c9a8ff;
+}
+
+.option input[type="radio"] {
+  display: none;
+}
+
+.option:hover {
+  background-color: #e6d9ff;
+}
+
+.option.selected {
+  background-color: #d7bfff;
+  transform: scale(0.97);
+  box-shadow: inset 2px 2px 6px rgba(75, 0, 130, 0.3);
+  border: 1px solid #8000ff;
+}
+
+/* Imagens dentro da opção */
+.option .language-img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+}
+
+/* Texto */
+.option .label-text {
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: #4b0082;
+}
+
+/* Botão enviar */
+.submit-btn {
+  background-color: #8000ff;
+  color: white;
+  border: none;
+  padding: 0.9rem 2.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(128, 0, 255, 0.3);
+}
+
+.submit-btn:hover {
+  background-color: #6600cc;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(128, 0, 255, 0.45);
+}
+
+/* Animação suave */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

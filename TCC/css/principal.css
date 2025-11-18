@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  color: #4b0082;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #8000ff;
+}
+.header-principal {
+  background-color: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f0e6ff;
+}
+#mapa-fases {
+  margin-top: 40px;
+  height: auto;
+  background-color: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+#lago {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(128, 0, 255, 0.15);
+  max-width: 100%;
+}
+
+.logo-titulo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #8000ff;
+  margin: 0;
+}
+
+.usuario-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nome-usuario {
+  font-weight: 600;
+  color: #4b0082;
+}
+
+.avatar-header {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #8000ff;
+}
+
+
+.painel-container {
+  display: flex;
+  min-height: 80vh;
+}
+
+.menu-lateral {
+  background-color: #f5f0ff;
+  width: 220px;
+  padding: 20px;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo-menu {
+  width: 100px;
+  display: block;
+  margin: 0 auto 30px;
+}
+
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-lateral li {
+  margin: 15px 0;
+}
+
+.menu-lateral a {
+  text-decoration: none;
+  color: #4b0082;
+  font-weight: bold;
+}
+
+.menu-lateral a:hover {
+  text-decoration: underline;
+}
+
+.conteudo-principal {
+  flex-grow: 1;
+  padding: 40px;
+}
+
+.usuario-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.painel-central {
+  text-align: center;
+}
+
+.barra-progresso {
+  margin: 20px 0;
+  text-align: left;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.barra {
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 20px;
+}
+
+.preenchimento {
+  background-color: #8000ff;
+  height: 100%;
+  width: 0%;
+}
+
+.btn-jogar {
+  background-color: #8000ff;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(128, 0, 255, 0.3);
+  transition: transform 0.2s;
+}
+
+.btn-jogar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(128, 0, 255, 0.4);
+}
+
+footer {
+  background-color: #8000ff;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+}
+
