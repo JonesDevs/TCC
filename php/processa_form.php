@@ -3,7 +3,7 @@ session_start();
 
 // Confere se o usuário está logado
 if (!isset($_SESSION['id'])) {
-    header("Location: ../html/login.html");
+    header("Location: ../php/login.php");
     exit();
 }
 
@@ -17,7 +17,7 @@ $idUsuario = $_SESSION['id'];
 $linguagens = $_POST['languages'] ?? [];
 
 if (count($linguagens) === 0) {
-    header("Location: ../html/form.html");
+    header("Location: ../php/form.php");
     exit();
 }
 
@@ -51,6 +51,7 @@ $stmt->close();
 $conn->close();
 
 // Redireciona para o painel principal (tipo Duolingo)
-header("Location: ../html/principal.php");
+header("Location: ../php/principal.php");
 exit();
 ?>
+
