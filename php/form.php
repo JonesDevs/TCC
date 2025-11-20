@@ -3,7 +3,7 @@ session_start();
 require_once "conexao.php";
 
 if (!isset($_SESSION['id'])) {
-    header("Location: ../html/login.php");
+    header("Location: ../php/login.php");
     exit();
 }
 
@@ -158,3 +158,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+
