@@ -4,7 +4,7 @@ require_once "conexao.php";
 
 // verificar login antes de usar $_SESSION['id']
 if (!isset($_SESSION['id'])) {
-    header("Location: ../html/login.php");
+    header("Location: ../php/login.php");
     exit;
 }
 
